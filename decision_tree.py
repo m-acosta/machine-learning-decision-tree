@@ -3,7 +3,7 @@
 # FILENAME: decision_tree.py
 # SPECIFICATION: Create a decision tree from a set of features.
 # FOR: CS 4210- Assignment #1
-# TIME SPENT: TODO
+# TIME SPENT: 13 minutes and counting
 #-----------------------------------------------------------*/
 
 #IMPORTANT NOTE: DO NOT USE ANY ADVANCED PYTHON LIBRARY TO COMPLETE THIS CODE SUCH AS numpy OR pandas. You have to work here only with standard
@@ -27,8 +27,29 @@ with open('contact_lens.csv', 'r') as csvfile:
 
 #transform the original categorical training features into numbers and add to the 4D array X. For instance Young = 1, Prepresbyopic = 2, Presbyopic = 3
 # so X = [[1, 1, 1, 1], [2, 2, 2, 2], ...]]
-#--> add your Python code here
-# X =
+Age = {
+   "Young": 1,
+   "Presbyopic": 2,
+   "Prepresbyopic": 3,
+}
+SpectaclePrescription = {
+   "Myope": 1,
+   "Hypermetrope": 2,
+}
+Astigmatism = {
+   "No": 1,
+   "Yes": 2,
+}
+TearProductionRate = {
+   "Reduced": 1,
+   "Normal": 2,
+}
+X = db
+for i, row in enumerate(db): 
+  X[i] = [Age[row[0]], SpectaclePrescription[row[1]], 
+          Astigmatism[row[2]], TearProductionRate[row[3]]]
+
+print(X)
 
 #transform the original categorical training classes into numbers and add to the vector Y. For instance Yes = 1, No = 2, so Y = [1, 1, 2, 2, ...]
 #--> addd your Python code here

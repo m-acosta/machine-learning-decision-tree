@@ -3,7 +3,7 @@
 # FILENAME: decision_tree.py
 # SPECIFICATION: Create a decision tree from a set of features.
 # FOR: CS 4210- Assignment #1
-# TIME SPENT: 13 minutes and counting
+# TIME SPENT: About 1.5 hours
 #-----------------------------------------------------------*/
 
 #IMPORTANT NOTE: DO NOT USE ANY ADVANCED PYTHON LIBRARY TO COMPLETE THIS CODE SUCH AS numpy OR pandas. You have to work here only with standard
@@ -44,16 +44,20 @@ TearProductionRate = {
    "Reduced": 1,
    "Normal": 2,
 }
-X = db
+X = db.copy() #make a copy of file read in
 for i, row in enumerate(db): 
+  #transform features based on dictionary
   X[i] = [Age[row[0]], SpectaclePrescription[row[1]], 
           Astigmatism[row[2]], TearProductionRate[row[3]]]
 
-print(X)
-
 #transform the original categorical training classes into numbers and add to the vector Y. For instance Yes = 1, No = 2, so Y = [1, 1, 2, 2, ...]
-#--> addd your Python code here
-# Y =
+RecommendedLenses = {
+   "No": 1,
+   "Yes": 2,
+}
+Y = [0] * len(db) #create empty list
+for i, row in enumerate(db):
+   Y[i] = RecommendedLenses[row[4]] #transform label based on dictionary
 
 #fitting the decision tree to the data
 clf = tree.DecisionTreeClassifier(criterion = 'entropy')
